@@ -44,8 +44,10 @@ ufw default deny outgoing
 # Every communiction via VPN is considered to be safe
 ufw allow out on tun0
 
-# Don't block the creation of the VPN tunnel
-ufw allow out $VPN_DST_PORT
+#Don't block the creation of the VPN tunnel
+#I've disabled this, to ensure that connections cannot be made through this port, bypassing the VPN.
+#Therefore the initial connection TO the VPN server must be made before the firewall is enabled.  
+#ufw allow out $VPN_DST_PORT
 
 #Block / Don't block DNS queries
 #By default, DNS querues are blocked (unless going through VPN) to prevent against potential DNS leaks.
